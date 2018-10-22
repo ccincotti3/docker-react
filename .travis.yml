@@ -1,3 +1,4 @@
+language: node_js
 sudo: required #we need super level permissions to execute build
 services: #tells travis to install docker
   - docker
