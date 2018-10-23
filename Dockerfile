@@ -24,8 +24,11 @@ RUN npm run build
 #Second step
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # the nginx directory is found in docs
 # this step is important, we're essentially dumping everything from the build phase except the final build output
 # reducing the total size of the container drastically (node_modules is roughly 155mb alone).. we don't need
 # dep files anymore since we only need them to build
+
+#EXPOSE 80 is for AWS elastic beanstalk! Uses it as the port that gets mapped to incoming traffic
